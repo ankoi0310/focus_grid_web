@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0a0926;
+  --surface: #16162a;
+  --text: rgba(242, 244, 255, 0.92);
+  --muted: rgba(242, 244, 255, 0.68);
+  --pink: #e94560;
+  --blue: #2196f3;
+  --gold: #e5c558;
+
+  --glass: rgba(22, 22, 42, 0.62);
+  --glass-2: rgba(10, 9, 38, 0.42);
+  --stroke: rgba(233, 69, 96, 0.22);
+  --stroke-2: rgba(33, 150, 243, 0.18);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-orbitron);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* Subtle animated tech grid + particles */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(800px 500px at 80% 10%, rgba(233, 69, 96, 0.18), transparent 55%),
+    radial-gradient(700px 460px at 10% 25%, rgba(33, 150, 243, 0.16), transparent 55%),
+    radial-gradient(900px 620px at 50% 85%, rgba(229, 197, 88, 0.10), transparent 60%),
+    linear-gradient(180deg, rgba(10, 9, 38, 0.85), rgba(10, 9, 38, 1));
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: -40px;
+  z-index: -1;
+  opacity: 0.52;
+  filter: blur(0.2px);
+  background-image:
+    linear-gradient(rgba(33, 150, 243, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(233, 69, 96, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(900px) rotateX(58deg) translateY(-120px);
+  transform-origin: top;
+  animation: techGridFloat 14s ease-in-out infinite;
+  mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 75%);
+}
+
+@keyframes techGridFloat {
+  0% {
+    background-position: 0 0, 0 0;
+    opacity: 0.46;
+  }
+  50% {
+    background-position: 40px 28px, -24px -16px;
+    opacity: 0.62;
+  }
+  100% {
+    background-position: 0 0, 0 0;
+    opacity: 0.46;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-orbitron), var(--font-inter), ui-sans-serif, system-ui;
+  }
+  .glass {
+    background: linear-gradient(180deg, var(--glass), rgba(22, 22, 42, 0.42));
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .hud-border {
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow:
+      0 0 0 1px rgba(233, 69, 96, 0.10),
+      0 0 28px rgba(33, 150, 243, 0.10);
+  }
+  .neon-pink {
+    box-shadow: 0 0 0 1px rgba(233, 69, 96, 0.40), 0 0 24px rgba(233, 69, 96, 0.45);
+  }
+  .neon-blue {
+    box-shadow: 0 0 0 1px rgba(33, 150, 243, 0.42), 0 0 22px rgba(33, 150, 243, 0.42);
+  }
+  .neon-gold {
+    box-shadow: 0 0 0 1px rgba(229, 197, 88, 0.48), 0 0 20px rgba(229, 197, 88, 0.32);
+  }
+  .text-muted {
+    color: var(--muted);
+  }
+}
+
+/* Minimal legal prose styling (no plugin). */
+.prose-legal h2 {
+  margin-top: 0;
+}
+.prose-legal a {
+  color: var(--blue);
+}
+.prose-legal strong {
+  color: rgba(242, 244, 255, 0.92);
+  font-weight: 600;
 }
