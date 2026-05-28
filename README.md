@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Focus Grid — Landing Page (Cyberpunk / Synthwave)
+
+Website landing page hiện đại, tối ưu chuyển đổi cho ứng dụng mobile **Focus Grid** với phong cách **Cyberpunk/Synthwave HUD** (glass-morphism + neon glow + grid background).
+
+### Highlights
+
+- **Hero**: Headline “Master Your Time in the Digital Grid” + CTA download iOS/Android + mock 3D “Focus Timer”
+- **Eisenhower Matrix (2×2)**: Do / Plan / Delegate / Eliminate với viền neon theo palette
+- **Virtual Garden**: thẻ “Digital Plants” (grow khi Deep Work)
+- **RPG Gamification**: Level + EXP bar + Coins counter **count-up khi scroll tới**
+- **Cyberpunk Analytics**: bar chart (weekly focus) + pie chart (task distribution) dạng neon HUD
+- **Animation**: fade-in + slide-up cho từng section, hover glow mạnh cho nút
+
+### Tech Stack
+
+- **Next.js** (App Router)
+- **Tailwind CSS v4** (theme + utilities trong `src/app/globals.css`)
+- **Framer Motion** (animations + in-view triggers)
+- Fonts: **Inter** + **Orbitron**
+
+### Design System (Palette)
+
+- **Background**: `#0a0926`
+- **Surface**: `#16162a`
+- **CTA Neon Pink**: `#e94560`
+- **Info Electric Blue**: `#2196f3`
+- **Gamification Cyber Gold**: `#e5c558`
 
 ## Getting Started
 
-First, run the development server:
+Cài dependencies (nếu cần) và chạy dev server:
+
+```bash
+npm install
+npm run dev
+```
+
+Mở `http://localhost:3000` để xem website.
+
+### Project Structure
+
+- `src/app/page.tsx`: entry page (render landing)
+- `src/components/LandingPage.tsx`: toàn bộ UI landing + animations
+- `src/app/globals.css`: tokens màu, glassmorphism, neon utilities, background tech-grid
+- `src/app/privacy/page.tsx`: Privacy Policy
+- `src/app/terms/page.tsx`: Terms of Service
+
+### Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Các biểu đồ neon (bar/pie) dùng SVG để đảm bảo style “HUD” và tương thích tốt với theme.
+- Nếu muốn thay link CTA download thật, chỉnh trong `src/components/LandingPage.tsx` (Hero section).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+Bạn có thể deploy lên Vercel hoặc bất kỳ platform hỗ trợ Next.js:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm run start
+```
