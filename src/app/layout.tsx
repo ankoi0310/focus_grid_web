@@ -75,6 +75,13 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${orbitron.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6897559423941068"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
